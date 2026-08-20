@@ -1,0 +1,9 @@
+{
+  "name": "harbor-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Harbor Life Quotes marketing site + lead capture quote form, syncing to Google Sheets.",
+  "dependencies": {
+    "googleapis": "^140.0.0"
+  }
+}

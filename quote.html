@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harbor Life Quotes — Get Your Free Quote</title>
+<meta name="description" content="Get your free, personalized life insurance quote in under a minute. No obligation, no hassle.">
+
+<!-- Open Graph tags for Facebook/social link previews -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Harbor Life Quotes — Get Your Free Quote">
+<meta property="og:description" content="Get your free, personalized life insurance quote in under a minute. No obligation, no hassle.">
+<meta property="og:image" content="https://REPLACE-WITH-YOUR-DOMAIN.com/og-image.png">
+<meta property="og:url" content="https://REPLACE-WITH-YOUR-DOMAIN.com">
+<meta property="og:site_name" content="Harbor Life Quotes">
+
+<!-- Twitter card (also used as fallback by some platforms) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Harbor Life Quotes — Get Your Free Quote">
+<meta name="twitter:description" content="Get your free, personalized life insurance quote in under a minute. No obligation, no hassle.">
+<meta name="twitter:image" content="https://REPLACE-WITH-YOUR-DOMAIN.com/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'REPLACE_WITH_YOUR_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=REPLACE_WITH_YOUR_PIXEL_ID&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+  :root {
+    --harbor-navy: #14283D;
+    --harbor-navy-deep: #0B1A28;
+    --lighthouse-gold: #E3A857;
+    --gold-bright: #F0BE7B;
+    --mist: #F4F6F5;
+    --fog: #E8EEE9;
+    --slate: #4A5A66;
+    --white: #FFFFFF;
+    --success-teal: #2F6E62;
+    --error-red: #B24C3A;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: linear-gradient(180deg, var(--harbor-navy) 0%, var(--harbor-navy) 220px, var(--mist) 220px, var(--mist) 100%);
+    min-height: 100vh;
+    color: var(--harbor-navy);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
+
+  .brand {
+    text-align: center;
+    padding-top: 12px;
+    margin-bottom: 28px;
+  }
+
+  .brand-mark {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: 0.01em;
+  }
+
+  .brand-tag {
+    font-size: 0.8rem;
+    color: var(--gold-bright);
+    margin-top: 4px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .card {
+    background: var(--white);
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(11, 26, 40, 0.18);
+    overflow: hidden;
+  }
+
+  /* Dock piling progress marker */
+  .dock {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 34px;
+    padding: 22px 24px 14px;
+    background: var(--fog);
+    position: relative;
+  }
+
+  .dock::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 30px;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--slate) 0 6px, transparent 6px 12px);
+    opacity: 0.35;
+  }
+
+  .piling {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    z-index: 1;
+  }
+
+  .piling-post {
+    width: 10px;
+    height: 30px;
+    background: var(--slate);
+    opacity: 0.3;
+    border-radius: 2px 2px 0 0;
+    transition: background 0.4s ease, opacity 0.4s ease;
+  }
+
+  .piling.active .piling-post,
+  .piling.done .piling-post {
+    background: var(--lighthouse-gold);
+    opacity: 1;
+  }
+
+  .piling-label {
+    font-size: 0.68rem;
+    color: var(--slate);
+    font-weight: 500;
+    text-align: center;
+    max-width: 64px;
+  }
+
+  .piling.active .piling-label { color: var(--harbor-navy); font-weight: 600; }
+
+  .form-body { padding: 28px 26px 30px; }
+
+  .step { display: none; }
+  .step.active { display: block; }
+
+  h1.step-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+    line-height: 1.25;
+  }
+
+  p.step-sub {
+    color: var(--slate);
+    font-size: 0.92rem;
+    margin: 0 0 22px;
+    line-height: 1.5;
+  }
+
+  label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--harbor-navy);
+    margin-bottom: 6px;
+  }
+
+  .field { margin-bottom: 18px; }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1.5px solid #D8DEE1;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    color: var(--harbor-navy);
+    background: var(--white);
+    transition: border-color 0.2s ease;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--lighthouse-gold);
+    box-shadow: 0 0 0 3px rgba(227, 168, 87, 0.2);
+  }
+
+  .field-error {
+    font-size: 0.76rem;
+    color: var(--error-red);
+    margin-top: 5px;
+    display: none;
+  }
+
+  .field.invalid input, .field.invalid select { border-color: var(--error-red); }
+  .field.invalid .field-error { display: block; }
+
+  .toggle-group { display: flex; gap: 10px; }
+
+  .toggle-btn {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    border: 1.5px solid #D8DEE1;
+    border-radius: 10px;
+    background: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.94rem;
+    font-weight: 500;
+    color: var(--slate);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .toggle-btn.selected {
+    border-color: var(--harbor-navy);
+    background: var(--harbor-navy);
+    color: var(--white);
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  button {
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+  }
+
+  button:active { transform: scale(0.98); }
+
+  .btn-primary {
+    flex: 1;
+    background: var(--harbor-navy);
+    color: var(--white);
+  }
+
+  .btn-primary:hover { background: var(--harbor-navy-deep); }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--slate);
+    border: 1.5px solid #D8DEE1;
+  }
+
+  .confirm-wrap {
+    text-align: center;
+    padding: 12px 4px 4px;
+  }
+
+  .horizon {
+    width: 100%;
+    height: 90px;
+    margin-bottom: 18px;
+  }
+
+  .confirm-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+
+  .confirm-sub {
+    color: var(--slate);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  .error-banner {
+    background: #FBEAE6;
+    color: var(--error-red);
+    font-size: 0.85rem;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    display: none;
+  }
+
+  .trust-note {
+    text-align: center;
+    font-size: 0.74rem;
+    color: var(--slate);
+    opacity: 0.75;
+    margin-top: 18px;
+    line-height: 1.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div style="background:var(--harbor-navy); padding:14px 20px;">
+  <a href="index.html" style="color:#fff; text-decoration:none; font-family:var(--font-display); font-weight:600; font-size:1.05rem; display:flex; align-items:center; gap:6px; max-width:480px; margin:0 auto;">
+    ← Harbor Life Quotes
+  </a>
+</div>
+
+<div class="page">
+  <div class="brand">
+    <div class="brand-mark">Harbor Life Quotes</div>
+    <div class="brand-tag">Coverage, charted clearly</div>
+  </div>
+
+  <div class="card">
+    <div class="dock">
+      <div class="piling active" data-step="1">
+        <div class="piling-post"></div>
+        <div class="piling-label">About You</div>
+      </div>
+      <div class="piling" data-step="2">
+        <div class="piling-post"></div>
+        <div class="piling-label">Coverage</div>
+      </div>
+      <div class="piling" data-step="3">
+        <div class="piling-post"></div>
+        <div class="piling-label">Done</div>
+      </div>
+    </div>
+
+    <div class="form-body">
+      <div class="error-banner" id="errorBanner"></div>
+
+      <!-- Step 1 -->
+      <div class="step active" data-step="1">
+        <h1 class="step-title">Let's start with the basics</h1>
+        <p class="step-sub">Takes under a minute. We'll use this to send your personalized quote.</p>
+
+        <div class="field" id="field-name">
+          <label for="name">Full name</label>
+          <input type="text" id="name" placeholder="Jane Smith" autocomplete="name">
+          <div class="field-error">Enter your full name.</div>
+        </div>
+
+        <div class="field" id="field-phone">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" placeholder="(843) 555-0100" autocomplete="tel">
+          <div class="field-error">Enter a valid phone number.</div>
+        </div>
+
+        <div class="field" id="field-email">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="jane@email.com" autocomplete="email">
+          <div class="field-error">Enter a valid email address.</div>
+        </div>
+
+        <div class="field" id="field-age">
+          <label for="age">Your age</label>
+          <input type="number" id="age" placeholder="35" min="0" max="90">
+          <div class="field-error">Enter an age between 0 and 90.</div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-primary" style="width:100%" onclick="goToStep(2)">Continue</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step" data-step="2">
+        <h1 class="step-title">Tell us about your coverage</h1>
+        <p class="step-sub">This helps us match you with the right plan and rate.</p>
+
+        <div class="field" id="field-coverage">
+          <label for="coverage">Coverage amount</label>
+          <select id="coverage">
+            <option value="">Select an amount</option>
+            <option value="$100,000">$100,000</option>
+            <option value="$250,000">$250,000</option>
+            <option value="$500,000">$500,000</option>
+            <option value="$1,000,000+">$1,000,000+</option>
+          </select>
+          <div class="field-error">Choose a coverage amount.</div>
+        </div>
+
+        <div class="field" id="field-health">
+          <label for="health">How would you rate your health?</label>
+          <select id="health">
+            <option value="">Select one</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Poor">Poor</option>
+          </select>
+          <div class="field-error">Choose your health status.</div>
+        </div>
+
+        <div class="field" id="field-smoker">
+          <label>Do you use tobacco or nicotine?</label>
+          <div class="toggle-group">
+            <div class="toggle-btn" data-value="No" onclick="selectSmoker(this)">No</div>
+            <div class="toggle-btn" data-value="Yes" onclick="selectSmoker(this)">Yes</div>
+          </div>
+          <div class="field-error">Please make a selection.</div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-secondary" onclick="goToStep(1)">Back</button>
+          <button class="btn-primary" id="submitBtn" onclick="submitForm()">Get My Quote</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Confirmation -->
+      <div class="step" data-step="3">
+        <div class="confirm-wrap">
+          <svg class="horizon" viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="60" x2="300" y2="60" stroke="#E8EEE9" stroke-width="2"/>
+            <circle cx="150" cy="60" r="8" fill="#E3A857"/>
+            <path d="M110 60 L120 40 L180 40 L190 60 Z" fill="#14283D"/>
+            <rect x="140" y="20" width="4" height="20" fill="#14283D"/>
+            <path d="M144 22 L168 30 L144 36 Z" fill="#E3A857"/>
+          </svg>
+          <div class="confirm-title">You've reached the harbor</div>
+          <p class="confirm-sub">Thanks — your information is in. A licensed agent will reach out shortly with your personalized quote.</p>
+        </div>
+      </div>
+
+      <p class="trust-note">Your information is kept private and shared only with your matched agent.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const state = {};
+
+  function setStepUI(stepNum) {
+    document.querySelectorAll('.step').forEach(el => {
+      el.classList.toggle('active', el.dataset.step == stepNum);
+    });
+    document.querySelectorAll('.piling').forEach(el => {
+      const s = Number(el.dataset.step);
+      el.classList.toggle('active', s === stepNum);
+      el.classList.toggle('done', s < stepNum);
+    });
+  }
+
+  function clearError(fieldId) {
+    document.getElementById(fieldId).classList.remove('invalid');
+  }
+
+  function setError(fieldId) {
+    document.getElementById(fieldId).classList.add('invalid');
+  }
+
+  function validateStep1() {
+    let ok = true;
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const age = document.getElementById('age').value.trim();
+
+    clearError('field-name'); clearError('field-phone'); clearError('field-email'); clearError('field-age');
+
+    if (name.length < 2) { setError('field-name'); ok = false; }
+    if (phone.replace(/\D/g,'').length < 10) { setError('field-phone'); ok = false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('field-email'); ok = false; }
+    if (age === '' || age < 0 || age > 90) { setError('field-age'); ok = false; }
+
+    if (ok) {
+      state.name = name; state.phone = phone; state.email = email; state.age = age;
+    }
+    return ok;
+  }
+
+  function validateStep2() {
+    let ok = true;
+    const coverage = document.getElementById('coverage').value;
+    const health = document.getElementById('health').value;
+
+    clearError('field-coverage'); clearError('field-health'); clearError('field-smoker');
+
+    if (!coverage) { setError('field-coverage'); ok = false; }
+    if (!health) { setError('field-health'); ok = false; }
+    if (!state.smoker) { setError('field-smoker'); ok = false; }
+
+    if (ok) { state.coverage = coverage; state.health = health; }
+    return ok;
+  }
+
+  function selectSmoker(el) {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    state.smoker = el.dataset.value;
+    clearError('field-smoker');
+  }
+
+  function goToStep(stepNum) {
+    if (stepNum === 2 && !validateStep1()) return;
+    setStepUI(stepNum);
+    if (stepNum === 2 && typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout'); // fires once they've completed step 1
+    }
+  }
+
+  async function submitForm() {
+    if (!validateStep2()) return;
+
+    const btn = document.getElementById('submitBtn');
+    const errorBanner = document.getElementById('errorBanner');
+    errorBanner.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    try {
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(state)
+      });
+
+      if (!res.ok) throw new Error('Submission failed');
+
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
+
+      setStepUI(3);
+    } catch (err) {
+      errorBanner.textContent = "Something went wrong sending your info. Please try again.";
+      errorBanner.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Get My Quote';
+    }
+  }
+</script>
+
+</body>
+</html>
